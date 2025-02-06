@@ -17,7 +17,7 @@ public class Sale : BaseEntity
     /// <summary>
     /// Gets the date and time when the sale was made.  
     /// </summary>
-    public DateTime PurchasedAt { get; set; }
+    public DateTime SoldAt { get; set; }
 
     /// <summary>
     /// Gets the customer who made a purchase.
@@ -54,6 +54,6 @@ public class Sale : BaseEntity
     /// </summary>
     public Sale()
     {
-        PurchasedAt = DateTime.UtcNow;
+        SoldAt = DateTime.UtcNow;
     }
 }
