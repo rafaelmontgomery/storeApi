@@ -19,6 +19,11 @@ public class Product : BaseEntity
     public decimal Price { get; set; }
 
     /// <summary>
+    /// Reference to sale items
+    /// </summary>
+    public ICollection<SaleItem> SaleItems { get; } = [];
+
+    /// <summary>
     /// Initializes a new instance of the Product class.
     /// </summary>
     public Product() { }

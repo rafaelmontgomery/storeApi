@@ -42,7 +42,7 @@ public class Sale : BaseEntity
     /// <summary>
     /// Gets the sale's items and products
     /// </summary>
-    public IEnumerable<SaleItem> SaleItems { get; set; } = [];
+    public ICollection<SaleItem> SaleItems { get; set; } = [];
 
     /// <summary>
     /// Gets the sale's total discount
