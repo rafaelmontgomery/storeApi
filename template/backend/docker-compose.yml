@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ambev.developerevaluation.webapi:
     container_name: ambev_developer_evaluation_webapi
@@ -41,7 +39,7 @@ services:
 
   ambev.developerevaluation.cache:
     container_name: ambev_developer_evaluation_cache 
-    image: redis:7.4.1-alpine     
+    image: redis:7.4.1-alpine
     command: redis-server --requirepass ev@luAt10n
     environment:
        MONGO_INITDB_ROOT_USERNAME: developer
