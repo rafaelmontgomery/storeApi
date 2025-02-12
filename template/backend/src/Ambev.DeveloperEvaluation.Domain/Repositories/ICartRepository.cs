@@ -14,4 +14,13 @@ public interface ICartRepository
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The created cart</returns>
     Task<Cart> CreateAsync(Cart cart, CancellationToken cancellationToken = default);
+
+
+    /// <summary>
+    /// Get query with optional date filter
+    /// </summary>
+    /// <param name="startDate">Optional start date</param>
+    /// <param name="endDate">Optional end date</param>
+    /// <returns></returns>
+    IQueryable<Cart> GetPaginatedCarts(DateTime? startDate, DateTime? endDate);
 }
