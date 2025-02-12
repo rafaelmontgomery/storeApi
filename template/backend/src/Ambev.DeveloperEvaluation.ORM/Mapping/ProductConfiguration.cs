@@ -12,11 +12,19 @@ public class ProductConfiguration : BaseEntityTypeConfiguration<Product>
 
         base.Configure(builder);
 
-        builder.Property(u => u.Name).IsRequired().HasMaxLength(50);
-        builder.Property(u => u.Description).IsRequired().HasMaxLength(500);
-        builder.Property(u => u.Price).IsRequired().HasPrecision(10, 2); //10000000,00
+        builder.Property(p => p.Title).IsRequired().HasMaxLength(50);
+        builder.Property(p => p.Description).IsRequired().HasMaxLength(500);
+        builder.Property(p => p.Price).IsRequired().HasPrecision(10, 2); //10000000,00
+        builder.Property(p => p.Category).IsRequired().HasMaxLength(50);
+        builder.Property(p => p.Image).IsRequired().HasMaxLength(50);
 
-        builder.HasMany(x => x.SaleItems)
+        builder.ComplexProperty(p => p.Rating, ratingBuilder =>
+        {
+            ratingBuilder.Property(r => r.Rate).IsRequired().HasColumnName("Rate").HasPrecision(6, 2);
+            ratingBuilder.Property(r => r.Count).IsRequired().HasColumnName("RateCount").HasMaxLength(10);
+        });
+
+        builder.HasMany(x => x.CartItems)
            .WithOne(y => y.Product)
            .HasForeignKey(y => y.ProductId);
     }

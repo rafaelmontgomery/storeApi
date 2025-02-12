@@ -42,6 +42,6 @@ public class ProductRepository : IProductRepository
     public async Task<Product?> GetByName(string name, CancellationToken cancellationToken = default)
     {
         return await _context.Products
-          .FirstOrDefaultAsync(u => u.Name == name, cancellationToken);
+          .FirstOrDefaultAsync(u => u.Title == name, cancellationToken);
     }
 }
