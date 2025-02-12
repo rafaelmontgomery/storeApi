@@ -61,9 +61,9 @@ public class User : BaseEntity, IUser
     public DateTime? UpdatedAt { get; set; }
 
     /// <summary>
-    /// Reference to user (customer) sales
+    /// Reference to user (customer) carts
     /// </summary>
-    public ICollection<Sale> Sales { get; set; } = [];
+    public ICollection<Cart> Carts { get; set; } = [];
 
     /// <summary>
     /// Gets the unique identifier of the user.

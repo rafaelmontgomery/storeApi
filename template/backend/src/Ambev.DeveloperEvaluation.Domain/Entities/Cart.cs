@@ -3,21 +3,21 @@
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
 
 /// <summary>
-/// Represents the sale with store items
+/// Represents the cart with store items
 /// This entity follows domain-driven design principles and includes business rules validation.
 /// </summary>
-public class Sale : BaseEntity
+public class Cart : BaseEntity
 {
     /// <summary>
-    /// Gets the number of the sale.
+    /// Gets the number of the cart.
     /// Must not be null and will be generated automatically
     /// </summary>
     public long Number { get; set; }
 
     /// <summary>
-    /// Gets the date and time when the sale was made.  
+    /// Gets the date and time when the cart was made.  
     /// </summary>
-    public DateTime SoldAt { get; set; }
+    public DateTime Date { get; set; }
 
     /// <summary>
     /// Gets the customer who made a purchase.
@@ -30,30 +30,30 @@ public class Sale : BaseEntity
     public Guid CustomerId { get; set; }
 
     /// <summary>
-    /// Gets the total sale amount
+    /// Gets the total cart amount
     /// </summary>
     public decimal TotalAmount { get; set; }
 
     /// <summary>
-    /// Gets the branch where the sale was made
+    /// Gets the branch where the cart was made
     /// </summary>
     public string Branch { get; set; } = string.Empty;
 
     /// <summary>
-    /// Gets the sale's items and products
+    /// Gets the cart's items and products
     /// </summary>
-    public ICollection<SaleItem> SaleItems { get; set; } = [];
+    public ICollection<CartItem> CartItems { get; set; } = [];
 
     /// <summary>
-    /// Gets the sale's total discount
+    /// Gets the cart's total discount
     /// </summary>
-    public decimal TotalDiscount => SaleItems.Sum(item => item.Discount);
+    public decimal TotalDiscount => CartItems.Sum(item => item.Discount);
 
     /// <summary>
-    /// Initializes a new instance of the Sale class.
+    /// Initializes a new instance of the Cart class.
     /// </summary>
-    public Sale()
+    public Cart()
     {
-        SoldAt = DateTime.UtcNow;
+        Date = DateTime.UtcNow;
     }
 }

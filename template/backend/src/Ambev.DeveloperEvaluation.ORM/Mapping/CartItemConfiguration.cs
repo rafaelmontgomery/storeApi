@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ambev.DeveloperEvaluation.ORM.Mapping;
-public class SaleItemConfiguration : BaseEntityTypeConfiguration<SaleItem>
+public class CartItemConfiguration : BaseEntityTypeConfiguration<CartItem>
 {
-    public override void Configure(EntityTypeBuilder<SaleItem> builder)
+    public override void Configure(EntityTypeBuilder<CartItem> builder)
     {
-        builder.ToTable("SaleItems");
+        builder.ToTable("CartItems");
 
         base.Configure(builder);
 
         builder.Property(u => u.Quantity).IsRequired().HasMaxLength(2);
-        builder.Property(u => u.IsCancelled).IsRequired();             
-        builder.Property(u => u.UnitPrice).IsRequired().HasPrecision(10, 2);       
+        builder.Property(u => u.IsCancelled).IsRequired();
+        builder.Property(u => u.UnitPrice).IsRequired().HasPrecision(10, 2);
     }
 }

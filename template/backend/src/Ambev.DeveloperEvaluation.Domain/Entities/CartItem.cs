@@ -3,20 +3,20 @@
 namespace Ambev.DeveloperEvaluation.Domain.Entities;
 
 /// <summary>
-/// Represents items of the sale
+/// Represents items of the cart
 /// This entity follows domain-driven design principles and includes business rules validation.
 /// </summary>
-public class SaleItem : BaseEntity
+public class CartItem : BaseEntity
 {
     /// <summary>
-    /// Gets the sale reference
+    /// Gets the cart reference
     /// </summary>
-    public Sale Sale { get; set; } = null!;
+    public Cart Cart { get; set; } = null!;
 
     /// <summary>
-    /// Gets the sale id
+    /// Gets the cart id
     /// </summary>
-    public Guid SaleId { get; set; }
+    public Guid CartId { get; set; }
 
     /// <summary>
     /// Gets the quantity sold of the item
@@ -67,7 +67,7 @@ public class SaleItem : BaseEntity
     }
 
     /// <summary>
-    /// Initializes a new instance of the SaleItem class.
+    /// Initializes a new instance of the CartItem class.
     /// </summary>
-    public SaleItem() { }
+    public CartItem() { }
 }
