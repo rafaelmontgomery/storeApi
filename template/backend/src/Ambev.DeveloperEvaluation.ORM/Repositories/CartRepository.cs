@@ -1,5 +1,6 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ambev.DeveloperEvaluation.ORM.Repositories;
 
@@ -30,5 +31,25 @@ public class CartRepository : ICartRepository
         await _context.Carts.AddAsync(cart, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
         return cart;
+    }
+
+
+    /// <summary>
+    /// Get query with optional date filter
+    /// </summary>
+    /// <param name="startDate">Optional start date</param>
+    /// <param name="endDate">Optional end date</param>
+    /// <returns></returns>
+    public IQueryable<Cart> GetPaginatedCarts(DateTime? startDate, DateTime? endDate)
+    {
+        var query = _context.Carts.AsQueryable();
+
+        if (startDate.HasValue)
+            query = query.Where(cart => cart.Date.ToUniversalTime() >= startDate.Value.ToUniversalTime());
+
+        if (endDate.HasValue)
+            query = query.Where(cart => cart.Date.ToUniversalTime() <= endDate.Value.ToUniversalTime());
+
+        return query.Include(c => c.CartItems);
     }
 }
