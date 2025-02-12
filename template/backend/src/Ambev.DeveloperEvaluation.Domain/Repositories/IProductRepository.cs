@@ -10,16 +10,33 @@ public interface IProductRepository
     /// <summary>
     /// Creates a new product in the repository
     /// </summary>
-    /// <param name="product">The user to create</param>
+    /// <param name="product">The product to create</param>
     /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns>The created user</returns>
+    /// <returns>The created product</returns>
     Task<Product> CreateAsync(Product product, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Retrieves a product by name
+    /// Retrieves a product by title
     /// </summary>
-    /// <param name="name">The email address to search for</param>
+    /// <param name="title">The email address to search for</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The product if found, null otherwise</returns>
-    Task<Product?> GetByName(string name, CancellationToken cancellationToken = default);
+    Task<Product?> GetByTitle(string title, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a product by their unique identifier
+    /// </summary>
+    /// <param name="id">The unique identifier of the product</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The product if found, null otherwise</returns>
+    Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a list of product by their unique identifier
+    /// </summary>
+    /// <param name="id">The unique identifier of the product</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The product if found, null otherwise</returns>
+    Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default);
+
 }

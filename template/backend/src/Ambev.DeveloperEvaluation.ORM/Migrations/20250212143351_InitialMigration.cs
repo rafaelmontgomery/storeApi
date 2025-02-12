@@ -57,7 +57,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     Number = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "numeric(12,2)", precision: 12, scale: 2, nullable: false),
                     Branch = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
@@ -65,8 +65,8 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                 {
                     table.PrimaryKey("PK_Carts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Carts_Users_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Carts_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -111,9 +111,9 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_CustomerId",
+                name: "IX_Carts_UserId",
                 table: "Carts",
-                column: "CustomerId");
+                column: "UserId");
         }
 
         /// <inheritdoc />

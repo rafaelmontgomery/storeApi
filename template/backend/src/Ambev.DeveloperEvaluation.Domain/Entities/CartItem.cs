@@ -49,6 +49,11 @@ public class CartItem : BaseEntity
     public decimal Discount => GetDiscount();
 
     /// <summary>
+    /// Gets the total amount with discount per item
+    /// </summary>
+    public decimal TotalAmountWithDiscount => TotalAmount - Discount;
+
+    /// <summary>
     /// Gets the item status (Cancelled/Not Cancelled)
     /// </summary>
     public bool IsCancelled { get; set; }

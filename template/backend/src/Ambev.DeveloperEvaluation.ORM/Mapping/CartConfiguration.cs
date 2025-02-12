@@ -14,8 +14,7 @@ public class CartConfiguration : BaseEntityTypeConfiguration<Cart>
 
         builder.Property(x => x.Number).UseIdentityColumn();// Auto generate number      
         builder.Property(x => x.Branch).IsRequired().HasMaxLength(100);
-        builder.Property(x => x.Date).IsRequired();
-        builder.Property(x => x.TotalAmount).IsRequired().HasPrecision(12, 2);
+        builder.Property(x => x.Date).IsRequired();      
 
         builder.HasMany(x => x.CartItems)
          .WithOne(y => y.Cart)

@@ -28,7 +28,7 @@ public class UserValidatorTests
     /// - Email (valid format)
     /// - Phone (valid Brazilian format)
     /// - Status (Active/Suspended)
-    /// - Role (Customer/Admin)
+    /// - Role (User/Admin)
     /// passes all validation rules without any errors.
     /// </summary>
     [Fact(DisplayName = "Valid user should pass all validation rules")]
@@ -186,7 +186,7 @@ public class UserValidatorTests
     /// Tests that validation fails when user role is None.
     /// This test verifies that:
     /// - The UserRole cannot be set to None
-    /// - Only Customer or Admin are valid role values
+    /// - Only User or Admin are valid role values
     /// The test ensures that every user must have a defined role
     /// in the system and prevents undefined or invalid role assignments.
     /// </summary>

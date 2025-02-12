@@ -40,9 +40,9 @@ public class CreateProductHandler : IRequestHandler<CreateProductCommand, Create
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var existingUser = await _productRepository.GetByName(command.Title, cancellationToken);
-        if (existingUser != null)
-            throw new InvalidOperationException($"Product with name {command.Title} already exists");
+        var existingProduct = await _productRepository.GetByTitle(command.Title, cancellationToken);
+        if (existingProduct != null)
+            throw new InvalidOperationException($"Product with title {command.Title} already exists");
 
         var product = _mapper.Map<Product>(command);
 

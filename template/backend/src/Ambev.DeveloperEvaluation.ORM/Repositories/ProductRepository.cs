@@ -31,7 +31,7 @@ public class ProductRepository : IProductRepository
         await _context.Products.AddAsync(product, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
         return product;
-    }
+    }   
 
     /// <summary>
     /// Retrieves a product by name
@@ -39,9 +39,31 @@ public class ProductRepository : IProductRepository
     /// <param name="name">The product name to search for</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The product if found, null otherwise</returns>
-    public async Task<Product?> GetByName(string name, CancellationToken cancellationToken = default)
+    public async Task<Product?> GetByTitle(string title, CancellationToken cancellationToken = default)
     {
         return await _context.Products
-          .FirstOrDefaultAsync(u => u.Title == name, cancellationToken);
+          .FirstOrDefaultAsync(u => u.Title == title, cancellationToken);
+    }
+
+    /// <summary>
+    /// Retrieves a product by their unique identifier
+    /// </summary>
+    /// <param name="id">The unique identifier of the product</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The product if found, null otherwise</returns>
+    public async Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Products.FirstOrDefaultAsync(o => o.Id == id, cancellationToken);
+    }
+
+    /// <summary>
+    /// Retrieves a list of product by their unique identifier
+    /// </summary>
+    /// <param name="id">The unique identifier of the product</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The product if found, null otherwise</returns>
+    public async Task<IEnumerable<Product>> GetByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
+    {
+        return await _context.Products.Where(o => ids.Contains(o.Id)).ToListAsync(cancellationToken);
     }
 }
