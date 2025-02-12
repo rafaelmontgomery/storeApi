@@ -22,12 +22,12 @@ public class Cart : BaseEntity
     /// <summary>
     /// Gets the customer who made a purchase.
     /// </summary>
-    public User Customer { get; set; } = null!;
+    public User User { get; set; } = null!;
 
     /// <summary>
     /// Gets the customer id who made a purchase.
     /// </summary>
-    public Guid CustomerId { get; set; }
+    public Guid UserId { get; set; }
 
     /// <summary>
     /// Gets the total cart amount
@@ -53,7 +53,6 @@ public class Cart : BaseEntity
     /// Initializes a new instance of the Cart class.
     /// </summary>
     public Cart()
-    {
-        Date = DateTime.UtcNow;
+    {       
     }
 }

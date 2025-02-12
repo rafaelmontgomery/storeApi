@@ -27,8 +27,8 @@ public class UserConfiguration : BaseEntityTypeConfiguration<User>
             .HasMaxLength(20);
 
         builder.HasMany(x => x.Carts)
-        .WithOne(y => y.Customer)
-        .HasForeignKey(y => y.CustomerId);
+        .WithOne(y => y.User)
+        .HasForeignKey(y => y.UserId);
 
     }
 }

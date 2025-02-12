@@ -19,7 +19,7 @@ public static class UserTestData
     /// - Email (valid format)
     /// - Phone (Brazilian format)
     /// - Status (Active or Suspended)
-    /// - Role (Customer or Admin)
+    /// - Role (User or Admin)
     /// </summary>
     private static readonly Faker<User> UserFaker = new Faker<User>()
         .RuleFor(u => u.Username, f => f.Internet.UserName())

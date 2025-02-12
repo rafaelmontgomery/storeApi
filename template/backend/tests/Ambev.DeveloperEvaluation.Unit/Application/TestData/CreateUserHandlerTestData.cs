@@ -19,7 +19,7 @@ public static class CreateUserHandlerTestData
     /// - Email (valid format)
     /// - Phone (Brazilian format)
     /// - Status (Active or Suspended)
-    /// - Role (Customer or Admin)
+    /// - Role (User or Admin)
     /// </summary>
     private static readonly Faker<CreateUserCommand> createUserHandlerFaker = new Faker<CreateUserCommand>()
         .RuleFor(u => u.Username, f => f.Internet.UserName())
