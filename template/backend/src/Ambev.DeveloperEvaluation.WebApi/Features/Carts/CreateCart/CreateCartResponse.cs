@@ -5,6 +5,11 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart;
 public class CreateCartResponse
 {
     /// <summary>
+    /// The unique identifier of the created cart
+    /// </summary>
+    public Guid Id { get; set; }
+
+    /// <summary>
     /// The number of the cart. 
     /// </summary>
     public long Number { get; set; }

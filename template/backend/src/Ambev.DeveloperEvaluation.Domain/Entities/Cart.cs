@@ -30,9 +30,9 @@ public class Cart : BaseEntity
     public Guid UserId { get; set; }
 
     /// <summary>
-    /// Gets the total cart amount
+    /// Gets the total cart amount without discont
     /// </summary>
-    public decimal TotalAmount { get; set; }
+    public decimal TotalAmount => CartItems.Sum(item => item.TotalAmount);
 
     /// <summary>
     /// Gets the branch where the cart was made
@@ -50,9 +50,14 @@ public class Cart : BaseEntity
     public decimal TotalDiscount => CartItems.Sum(item => item.Discount);
 
     /// <summary>
+    /// Gets the cart's total amount with discount
+    /// </summary>
+    public decimal TotalAmountWithDiscount => CartItems.Sum(item => item.TotalAmountWithDiscount);
+
+    /// <summary>
     /// Initializes a new instance of the Cart class.
     /// </summary>
     public Cart()
-    {       
+    {
     }
 }
