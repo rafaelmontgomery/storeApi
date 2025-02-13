@@ -52,4 +52,29 @@ public class CartRepository : ICartRepository
 
         return query.Include(c => c.CartItems);
     }
+
+    /// <summary>
+    /// Retrieves a cart by their unique identifier
+    /// </summary>
+    /// <param name="id">The unique identifier of the cart</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>The cart if found, null otherwise</returns>
+    public async Task<Cart?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(o => o.Id == id, cancellationToken);
+    }
+
+    /// <summary>
+    /// Cancel a item on database
+    /// </summary>
+    /// <param name="item">Item to be cancelled</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    public async Task<bool> CancelItemAsync(CartItem item, CancellationToken cancellationToken = default)
+    {
+        item.SetCancelled();
+        _context.CartItems.Attach(item);
+        _context.Entry(item).Property(x => x.IsCancelled).IsModified = true;
+        return (await _context.SaveChangesAsync(cancellationToken)) > 0;
+    }
 }

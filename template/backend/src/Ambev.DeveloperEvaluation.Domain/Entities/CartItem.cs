@@ -56,7 +56,7 @@ public class CartItem : BaseEntity
     /// <summary>
     /// Gets the item status (Cancelled/Not Cancelled)
     /// </summary>
-    public bool IsCancelled { get; set; }
+    public bool IsCancelled { get; private set; }
 
     /// <summary>
     /// Calculates discount based on business rule
@@ -70,6 +70,11 @@ public class CartItem : BaseEntity
             _ => TotalAmount,
         };
     }
+
+    /// <summary>
+    /// Cancel a item
+    /// </summary>
+    public void SetCancelled() => IsCancelled = true;
 
     /// <summary>
     /// Initializes a new instance of the CartItem class.
