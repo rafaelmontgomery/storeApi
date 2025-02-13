@@ -32,7 +32,7 @@ public class CreateCartHandler : IRequestHandler<CreateCartCommand, CreateCartRe
         var productIds = command.CartItems.Select(c => c.ProductId).ToList();
         var products = await _productRepository.GetByIdsAsync(productIds, cancellationToken);
 
-        var invalidIds = products.Select(p => p.Id).Except(productIds).ToList();
+        var invalidIds = productIds.Except(products.Select(p => p.Id)).ToList();
 
         if (invalidIds.Count != 0)
             throw new InvalidOperationException($"Some product id's are invalid {string.Join(";", invalidIds)}");
