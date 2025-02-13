@@ -13,6 +13,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Application.Users;
 /// <summary>
 /// Contains unit tests for the <see cref="CreateUserHandler"/> class.
 /// </summary>
+[Trait("Category", "Users")]
 public class CreateUserHandlerTests
 {
     private readonly IUserRepository _userRepository;

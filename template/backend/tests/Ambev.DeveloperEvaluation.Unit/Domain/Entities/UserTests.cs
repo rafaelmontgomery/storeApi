@@ -9,6 +9,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain.Entities;
 /// Contains unit tests for the User entity class.
 /// Tests cover status changes and validation scenarios.
 /// </summary>
+[Trait("Category", "Users")]
 public class UserTests
 {
     /// <summary>

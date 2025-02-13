@@ -11,6 +11,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain.Validation
     /// - Must match pattern: ^\+?[1-9]\d{1,14}$
     ///   (Optional '+' prefix, first digit 1-9, followed by 1-14 digits)
     /// </summary>
+    [Trait("Category", "Phone")]
     public class PhoneValidatorTests
     {
         [Theory(DisplayName = "Given a phone number When validating Then should validate according to regex pattern")]

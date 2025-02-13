@@ -11,6 +11,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain.Validation;
 /// Tests cover validation of all user properties including username, email,
 /// password, phone, status, and role requirements.
 /// </summary>
+[Trait("Category", "Users")]
 public class UserValidatorTests
 {
     private readonly UserValidator _validator;

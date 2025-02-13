@@ -9,6 +9,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain.Validation;
 /// Contains unit tests for the EmailValidator class.
 /// Tests cover various email validation scenarios including format, length, and empty checks.
 /// </summary>
+[Trait("Category", "Email")]
 public class EmailValidatorTests
 {
     private readonly EmailValidator _validator;
