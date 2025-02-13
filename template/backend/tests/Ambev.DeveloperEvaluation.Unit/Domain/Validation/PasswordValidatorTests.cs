@@ -9,6 +9,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain.Validation;
 /// Contains unit tests for the PasswordValidator class.
 /// Tests cover password requirements including length, character types, and empty checks.
 /// </summary>
+[Trait("Category", "Password")]
 public class PasswordValidatorTests
 {
     private readonly PasswordValidator _validator;

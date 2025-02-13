@@ -10,6 +10,8 @@ using NSubstitute;
 using Xunit;
 
 namespace Ambev.DeveloperEvaluation.Unit.Application.Carts;
+
+[Trait("Category", "Carts")]
 public class CreateCartHandlerTests
 {
     private readonly ICartRepository _cartRepository;
@@ -17,6 +19,7 @@ public class CreateCartHandlerTests
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
     private readonly CreateCartHandler _handler;
+
 
     public CreateCartHandlerTests()
     {
@@ -30,7 +33,7 @@ public class CreateCartHandlerTests
     /// <summary>
     /// Tests that a valid cart creation request is handled successfully.
     /// </summary>
-    [Fact(DisplayName = "Given valid user data When creating user Then returns success response")]
+    [Fact(DisplayName = "Given valid cart data When creating user Then returns success response")]
     public async Task Handle_ValidRequest_ReturnsSuccessResponse()
     {
         // Given
@@ -74,5 +77,21 @@ public class CreateCartHandlerTests
         createCartResult.Should().NotBeNull();
         createCartResult.Id.Should().Be(cart.Id);
         await _cartRepository.Received(1).CreateAsync(Arg.Any<Cart>(), Arg.Any<CancellationToken>());
+    }
+
+    /// <summary>
+    /// Tests that an invalid cart creation request throws a validation exception.
+    /// </summary>
+    [Fact(DisplayName = "Given invalid user data When creating user Then throws validation exception")]
+    public async Task Handle_InvalidRequest_ThrowsValidationException()
+    {
+        // Given
+        var command = new CreateCartCommand(); // Empty command will fail validation
+
+        // When
+        var act = () => _handler.Handle(command, CancellationToken.None);
+
+        // Then
+        await act.Should().ThrowAsync<FluentValidation.ValidationException>();
     }
 }

@@ -6,6 +6,7 @@ using Xunit;
 
 namespace Ambev.DeveloperEvaluation.Unit.Domain.Specifications
 {
+    [Trait("Category", "Users")]
     public class ActiveUserSpecificationTests
     {
         [Theory]
