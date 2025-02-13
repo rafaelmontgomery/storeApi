@@ -1,7 +1,13 @@
-﻿namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart;
+﻿namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.Common;
 
 public class CartItemResponse
 {
+
+    /// <summary>
+    /// The unique identifier of the item
+    /// </summary>
+    public Guid Id { get; set; }
+
     /// <summary>
     /// The quantity sold of the item
     /// </summary>
