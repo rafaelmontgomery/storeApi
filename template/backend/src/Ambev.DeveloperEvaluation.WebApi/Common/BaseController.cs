@@ -7,6 +7,8 @@ namespace Ambev.DeveloperEvaluation.WebApi.Common;
 [Route("api/[controller]")]
 [Authorize]
 [ApiController]
+[ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
+[ProducesResponseType(typeof(void), StatusCodes.Status403Forbidden)]
 public class BaseController : ControllerBase
 {
     protected int GetCurrentUserId() =>
