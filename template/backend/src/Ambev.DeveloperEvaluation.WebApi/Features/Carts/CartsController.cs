@@ -1,7 +1,9 @@
-﻿using Ambev.DeveloperEvaluation.Application.Carts.CancelItem;
+﻿using System.Security.Claims;
+using Ambev.DeveloperEvaluation.Application.Carts.CancelItem;
 using Ambev.DeveloperEvaluation.Application.Carts.CreateCarts;
 using Ambev.DeveloperEvaluation.Application.Carts.ListCarts;
 using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Domain.Enums;
 using Ambev.DeveloperEvaluation.WebApi.Common;
 using Ambev.DeveloperEvaluation.WebApi.Features.Carts.CancelItem;
 using Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart;
@@ -105,6 +107,7 @@ public class CartsController : BaseController
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     [HttpPut("cancelItem")]
+    [ClaimsAuthorize(ClaimTypes.Role, nameof(UserRole.Admin))]
     [ProducesResponseType(typeof(PaginatedResponse<ListCartsResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
